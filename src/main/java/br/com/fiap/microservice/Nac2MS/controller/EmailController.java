@@ -19,7 +19,7 @@ import br.com.fiap.microservice.Nac2MS.model.Email;
 import br.com.fiap.microservice.Nac2MS.service.EmailService;
 
 
-@RestController
+@RestController("/api")
 public class EmailController {
 	
 	@Autowired
@@ -43,16 +43,6 @@ public class EmailController {
 		return service.searchEmail(id);
 	}
 	
-	@GetMapping("/teste")
-	public EmailDto getEmail(){
-	  EmailDto r = new EmailDto();
-	  r.setEmailFrom("wngrgoncalves@gmail.com");
-	  r.setEmailTo("rm83459@fiap.com.br");
-	  r.setSubject("teste");
-	  r.setText("teste");
-	  return r;
-		
-	}
 
 	
 
