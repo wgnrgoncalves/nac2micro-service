@@ -1,6 +1,7 @@
 package br.com.fiap.microservice.Nac2MS.controller;
 
 
+import java.util.List;
 import java.util.Optional;
 
 import javax.validation.Valid;
@@ -19,14 +20,14 @@ import br.com.fiap.microservice.Nac2MS.model.Email;
 import br.com.fiap.microservice.Nac2MS.service.EmailService;
 
 
-@RestController("/api")
+@RestController()
 public class EmailController {
 	
 	@Autowired
 	private EmailService service;
 	
-	@PostMapping("/send")
-	public ResponseEntity<Email> sendEmail(@RequestBody EmailDto emailDto){
+	@PostMapping("/api/email/send")
+	public ResponseEntity<Email> sendEmail(@RequestBody @Valid EmailDto emailDto){
 		
 		Email email = new Email();
 		BeanUtils.copyProperties(emailDto, email);
@@ -38,11 +39,16 @@ public class EmailController {
 	}
 	
 	
-	@PostMapping("/seach/id")
+	@PostMapping("/api/email/seach/{id}")
 	public Optional<Email> pesquisaEmail(@RequestBody String id){		
 		return service.searchEmail(id);
 	}
 	
+	
+	@GetMapping("/api/email")
+	public List<Email> ListEmail(){		
+		return service.listEmail();
+	}
 
 	
 

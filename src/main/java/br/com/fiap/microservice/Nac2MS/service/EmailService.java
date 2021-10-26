@@ -1,6 +1,7 @@
 package br.com.fiap.microservice.Nac2MS.service;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -59,6 +60,10 @@ public class EmailService {
 	
 	public Optional<Email> searchEmail(String  id){
 		return emailRepository.findById(id);
+	}
+	
+	public List<Email> listEmail(){
+		return emailRepository.findAll();
 	}
 	
 
